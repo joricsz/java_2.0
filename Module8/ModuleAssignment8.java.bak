@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+public class ModuleAssignment8{
+	public static void main(String ... args) throws IOException{
+		File myFile = new File(args[0]);
+		BufferedReader  br = new BufferedReader(new FileReader(myFile));
+		Scanner sc = new Scanner(System.in);
+		
+		Map<String, String> Credentials = new HashMap<>();
+		
+		String str, temp=null;
+		int ctr = 1;
+		
+		while((str = br.readLine()) != null)
+		{
+			if (ctr%2==0){
+				Credentials.put(temp, str);
+			}
+			else{
+				Credentials.put(str, null);
+				temp = str;
+			}
+			ctr++;
+		}
+		System.out.println(Credentials);
+		
+		System.out.print("Enter username: ");
+		String user = sc.nextLine();
+		System.out.print("Enter password: ");
+		String pass = sc.nextLine();
+		
+		if(Credentials.containsKey(user)){
+			String tempPass = Credentials.get(user);
+			if(pass.equals(tempPass)){
+				System.out.println("Access Granted");
+			}
+			else{
+			System.out.println("Access Denied");
+			}
+		}
+		else{
+		System.out.println("Access Denied");
+		}
+		br.close();
+		sc.close();
+	}
+}
