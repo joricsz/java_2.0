@@ -1,0 +1,42 @@
+
+import java.time.Period;
+import java.time.LocalDate;
+
+public class Person{
+	//instance variables
+	private String name;
+	private String birthDay;
+	private int age;
+	
+	//constructors
+	public Person(String name, String Birthday){
+		this.name = name;
+		this.birthDay = Birthday;
+		this.age = computeAge(Birthday);
+	}
+	
+	//setters and getters
+	public String getName(){
+		return name;
+	}
+	public int getAge(){
+		return age;
+	}
+	public String getBday(){
+		return birthDay;
+	}
+	
+	//other methods
+	public int computeAge(String Birthday){//MM/dd/YYYY
+		LocalDate today = LocalDate.now();
+	
+		String month = Birthday.substring(0,2);
+		String day = Birthday.substring(3,5);
+		String year = Birthday.substring(6,10);
+		
+		LocalDate birthday = LocalDate.of(Integer.valueOf(year), Integer.valueOf(month), Integer.valueOf(day));
+		
+		Period p = Period.between(birthday, today);
+		return p.getYears();
+	}
+}
