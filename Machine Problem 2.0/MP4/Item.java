@@ -1,0 +1,39 @@
+
+public class Item{
+	//instance variables
+	private String name;
+	private double weight;
+	
+	//constructor
+	public Item(String name, double weight){
+		this.name = name;
+		this.weight = weight;
+	}
+	
+	//getters
+	public String getName(){
+		return name;
+	}
+	public double getWeight(){
+		return weight;
+	}
+	
+	//setters
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setWeight(double weight){
+		this.weight = weight;
+	}
+	
+	//other methods
+	public boolean use(Object target){
+		System.out.println("Not Usable!");
+		return false;
+	}
+	
+	public String toString(){
+		return "Name: " + name + "\nWeight: " + weight + "\n";
+	} 
+	
+}
